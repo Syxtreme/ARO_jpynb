@@ -1,0 +1,700 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There is a large amount of libraries, called **modules**, available in Python that extend its functionality. To use them in your code, use the keyword \"import\". See the code below for various ways of importing a module."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "# import a module (Python \"library\")\n",
+    "import random\n",
+    "\n",
+    "# import a module under an alias (numpy => np)\n",
+    "import numpy as np\n",
+    "\n",
+    "# import a function (or submodule or a variable) from a module\n",
+    "from numpy.linalg import pinv\n",
+    "\n",
+    "# import a submodule under an alias\n",
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The basic functionality of Python is very similar to other high-level programming languages."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a = 2 # assign the number '2' to the variable 'a'\n",
+    "b = 3\n",
+    "\n",
+    "a + b     # add 'a' and 'b' (but the results get discarded)\n",
+    "c = a * b # multiply 'a' and 'b' and assign the result to 'c'\n",
+    "\n",
+    "c += 1    # add 1 to 'a' and save the result to a\n",
+    "\n",
+    "d = 1.5e5 # stores the number 150000.0 in variable d\n",
+    "\n",
+    "something = True # assign boolean value 'True' to the variable"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that Python is not a typed language, therefore you don't need to (but also can't) specify the type of a variable and you can assign different data types to the same variable."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "v = 7\n",
+    "v = 'seven'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "One word of caution, when using Python 2.7, operations with integers are stored into integer variables (i.e. when assigning a result to a variable it is internally typed as an integer). For example, the expression '7 / 2' would yield the number 3 (and not 3.5). Similarly, 'b / a' with the values of 'a' and 'b' from the cell above would yield 1 (instead of 1.5). You can avoid this either by using a decimal point, even when using integers (e.g. '7 / 2.' - not the decimal point), or by specifying the output type (e.g. float(b / a)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Before you start with more advanced functionality, you should familiarize yourself with some debugging functionality. Most basic debugging can be done by printing the results (or intermediate steps) of your code. In Python, you can do this via the \"print\" function. Depending on the version of Python you are running, the syntax is either __print 'some_string'__ (for Python 2.7)  or __print('some_string')__ (for Python 3.5+). Either single quotes or double quotes can be used to enclose the string (but closing quotes must match the opening ones). You can also print variables and do some formatting (but we will show just the basics here)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello world!\n",
+      "2\n",
+      " a = 2 \n",
+      " b = 3 \n",
+      " a * b = 6\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Prints the string 'hello world'.\n",
+    "print('hello world!')\n",
+    "\n",
+    "# Prints the contents of the variable 'a'.\n",
+    "print(a)\n",
+    "\n",
+    "'''The '{}'s will be replaced by the variables\n",
+    "inside the 'format()' function. The string '\\n'\n",
+    "is the newline character. There are spaces around it\n",
+    "just to make the text more clear. Normally,\n",
+    "the would be unnecessary.\n",
+    "'''\n",
+    "print(' a = {} \\n b = {} \\n a * b = {}'.format(a, b, c))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Following are some examples of control constructs in Python:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The random number was higher than 0.5\n"
+     ]
+    }
+   ],
+   "source": [
+    "# random() generates a pseudo-random number in range [0, 1);\n",
+    "# make sure you imported the random module (see the first cell)\n",
+    "if random.random() > 0.5:\n",
+    "    print('The random number was higher than 0.5')\n",
+    "else:\n",
+    "    print('The random number was smaller than 0.5')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "5\n",
+      "4\n",
+      "3\n",
+      "2\n",
+      "1\n"
+     ]
+    }
+   ],
+   "source": [
+    "i = 5\n",
+    "while i > 0:\n",
+    "    print(i)\n",
+    "    i -= 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "# range(n) generates a sequence of number from 0 to n,\n",
+    "# excluding n (note the absence of '5' in the output)\n",
+    "for i in range(5):\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Similarly to other languages, Python has also some kind of \"arrays\". In Python, they are called 'lists'. You can create lists either by using the keyword \"list\" or by using square brackets."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3]\n",
+      "[1, 2, 3, 4]\n",
+      "[1, 2, 3]\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "l1 = list()             # an empty list\n",
+    "l2 = []                 # also an empty list\n",
+    "l3 = [1, 2, 3]          # a list containing some numbers\n",
+    "\n",
+    "# a list containing a number and a string\n",
+    "# and another list (remember that Python is not typed)\n",
+    "l4 = [1, 'a', [5, 'b']]\n",
+    "\n",
+    "print(l3)\n",
+    "l3.append(4) # 'append' the number 4 to the list\n",
+    "print(l3)\n",
+    "n = l3.pop() # 'pop' the last element from the list\n",
+    "print(l3)\n",
+    "print(n)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can access the elements of the list using the square brackets after the lists variable. Python uses zero-based indexing."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "[1, 2]\n",
+      "[2, 3, 4, 5]\n",
+      "5\n",
+      "[4, 5]\n",
+      "[1, 2, 3]\n",
+      "[2, 3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "l = [1, 2, 3, 4, 5]\n",
+    "print(l[0])   # the first element of the list\n",
+    "print(l[:2])  # elements with index lower than 2 (not including 2)\n",
+    "print(l[1:])  # elements with index of 1 or higher (including 1)\n",
+    "print(l[-1])  # the last element of the list\n",
+    "print(l[-2:]) # the last two elements\n",
+    "print(l[:-2]) # elements from index 0 to the third element from the end\n",
+    "print(l[1:3]) # elements with index 1 and 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can populate lists manually, via loops or using so-called list comprehensions, specific to Python (similar constructs are used in MATLAB). Comprehensions are often faster than loops."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n",
+      "[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\n"
+     ]
+    }
+   ],
+   "source": [
+    "lin = range(10) # range generates numbers from 0 to n-1\n",
+    "lout = []\n",
+    "\n",
+    "for i in lin:\n",
+    "    lout.append(i ** 2)\n",
+    "\n",
+    "print(lin)\n",
+    "print(lout)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n",
+      "[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\n"
+     ]
+    }
+   ],
+   "source": [
+    "lin = range(10) # range generates numbers from 0 to n-1\n",
+    "\n",
+    "lout = [i ** 2 for i in lin]\n",
+    "\n",
+    "print(lin)\n",
+    "print(lout)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When comparing Python lists to MATLAB arrays, there are some limitations of the lists with regards to mathematical operations."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3, 1, 2, 3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "l = [1, 2, 3]\n",
+    "print(l * 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "More advanced version of arrays is provided by the NumPy module. They have much greater functionality. In the simplest of cases, the NumPy arrays can be created from the Python lists. Don't forget to import the numpy module."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "[2 4 6]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([1, 2, 3])\n",
+    "print(arr)\n",
+    "print(arr * 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Indexing of the NumPy arrays follows similar conventions to the Python lists (but there are many other possibilities, such as indexing by providing arrays of indices and so on).\n",
+    "Arrays can be also multidimensional. To create 2D arrays, each row must be defined as a separate list (e.g. the input will be a list of rows, where each row is a list of values)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "[1 2 3]\n",
+      "[1 2 3]\n",
+      "1\n",
+      "[1 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr2D = np.array([[1, 2, 3], [4, 5, 6]])\n",
+    "print(arr2D)\n",
+    "print(arr2D[0])      # first row\n",
+    "print(arr2D[0, :])   # the same thing (first row) but less error-prone\n",
+    "print(arr2D[0, 0])   # first element (first row & first column)\n",
+    "print(arr2D[:, 0])   # first column"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lengths and shapes of arrays and lists"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3\n",
+      "3\n",
+      "2\n",
+      "(3,)\n",
+      "(3,)\n",
+      "(2, 3)\n",
+      "(3,)\n",
+      "(1, 3)\n",
+      "(3, 1)\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(len(l))      # length of the list\n",
+    "print(len(arr))    # length of the array\n",
+    "print(len(arr2D))  # length of the outermost dimension of the array\n",
+    "\n",
+    "print(np.shape(l)) # shape of the list\n",
+    "# The (X,) signifies a one dimensional list/array\n",
+    "print(arr.shape)   # shape of the array\n",
+    "print(arr2D.shape) # number of rows, number of columns\n",
+    "\n",
+    "# Some noteworthy cases\n",
+    "print(np.shape([1, 2, 3]))       # 1-D array\n",
+    "print(np.shape([[1, 2, 3]]))     # 2-D array with singleton dimension\n",
+    "print(np.shape([[1], [2], [3]])) # a column vector"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Some functionality of the NumPy library and what can you do with the arrays"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[3 4 5]\n",
+      " [6 7 8]]\n",
+      "[[ 7 16 27]\n",
+      " [40 55 72]]\n",
+      "[[ 1.          1.41421356  1.73205081]\n",
+      " [ 2.          2.23606798  2.44948974]]\n",
+      "21\n",
+      "[5 7 9]\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = np.array([[1, 2, 3], [4, 5, 6]])\n",
+    "b = np.array([[7, 8, 9], [10, 11, 12]])\n",
+    "\n",
+    "print(a + 2)             # adds 2 to each element\n",
+    "print(a * b)             # element-wise multiplication between arrays\n",
+    "print(np.sqrt(a))        # element-wise square root\n",
+    "print(np.sum(a))         # sum of all elements\n",
+    "print(np.sum(a, axis=0)) # row-wise sum of elements"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Matrix multiplication"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 50  68]\n",
+      " [122 167]]\n",
+      "[[ 50  68]\n",
+      " [122 167]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "c = a.dot(b.T)  # b.T => transpose of b\n",
+    "print(c)\n",
+    "\n",
+    "# OR\n",
+    "\n",
+    "a = np.matrix(a) # converts a to NumPy matrix\n",
+    "b = np.matrix(b) # converts b to NumPy matrix\n",
+    "c = a * b.T\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Use the matrix data type when you need to do matrix operations and code readability is more important. Use arrays otherwise (especially if performance is important)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "# a <- array of size 100 rows by 100 columns,\n",
+    "# populated with random integers in range [0, 100)\n",
+    "a = np.random.randint(0, 100, (100, 100))\n",
+    "# b <- matrix with the same values as the array 'a'\n",
+    "b = np.matrix(a) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 79,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1000 loops, best of 3: 17.2 µs per loop\n"
+     ]
+    }
+   ],
+   "source": [
+    "# this statement \"times\" the execution of the following lines\n",
+    "# works only in IPython (%[%]<something> are \"magic commands\")\n",
+    "%%timeit -n 1000\n",
+    "c = np.sum(a + 10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1000 loops, best of 3: 23.7 µs per loop\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit -n 1000\n",
+    "c = np.sum(b + 10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Although, printing text is quite useful, it is often better to visualize data graphically, e.g. plot them on a graph. Especially, when working with more complex data. \"Matplotlib\" is a Python module most commonly used for plotting (more advanced user are welcome to look at _plotly_ or _pyqtgraph_)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<matplotlib.figure.Figure at 0x7f318fba4250>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Remember to import the pyplot module from the matplotlib\n",
+    "# See the cell at the beginning\n",
+    "y = np.random.randint(0, 10, (10,)) # generate 10 random integers\n",
+    "x = range(10) # create sequence of numbers in range [0, 10)\n",
+    "\n",
+    "plt.figure()      # create new figure\n",
+    "plt.clf()         # clear the figure\n",
+    "plt.plot(x, y)    # plot the points [x, y]\n",
+    "plt.pause(0.001) # pause the execution so that the figure can be shown"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There is much more you can do in Python with NumPy. If you wish to learn more, read this hand guide for NumPy:\n",
+    "https://docs.scipy.org/doc/numpy-dev/user/quickstart.html"
+   ]
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python [conda root]",
+   "language": "python",
+   "name": "conda-root-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
